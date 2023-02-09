@@ -1,0 +1,21 @@
+.logo {
+  width: 160px;
+  height: 31px;
+  margin: 16px 24px 16px 0;
+  float: left;
+  h1{
+    font-size: 18px;
+    color: #fff;
+    line-height: 32px;
+  }
+}
+
+nz-header {
+  position: fixed;
+  width: 100%;
+  z-index: 10;
+}
+
+[nz-menu] {
+  line-height: 64px;
+}

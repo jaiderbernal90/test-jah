@@ -1,0 +1,33 @@
+<nz-card  [nzLoading]="loading">
+    <nz-card-meta [nzTitle]="building.title"></nz-card-meta>
+    <div class="d-flex justify-content-between">
+    <span class="text-muted mt-2 d-block">
+        {{ building.type | typeBuilding }}
+    </span>
+    <span class="text-bolder mt-2 d-block">
+        {{ building.price | currency }}
+    </span>
+    </div>
+    <span class="text-muted mt-2 d-block">
+        {{ building.description | slice:0:100 }}...
+    </span>
+    <div class="d-flex justify-content-around mt-4">
+        <div class="grid-nz-card" nz-tooltip="Area (m2)">
+            <span nz-icon nzType="scan" nzTheme="outline"></span>
+            <span class="ml-2">{{ building.area }}</span> 
+        </div>
+        <div class="grid-nz-card" nz-tooltip="Número de habitaciones">
+            <span nz-icon nzType="home" nzTheme="outline"></span>
+            <span class="ml-2">{{ building.num_rooms }}</span> 
+        </div>
+        <div class="grid-nz-card" nz-tooltip="Número de parqueaderos">
+            <span nz-icon nzType="car" nzTheme="outline"></span>
+            <span class="ml-2">{{ building.num_parking }}</span> 
+        </div>
+       
+        <div class="grid-nz-card" nz-tooltip="Número de baños">
+            <span nz-icon nzType="woman" nzTheme="outline"></span>
+            <span class="ml-2">{{ building.num_toilets }}</span> 
+        </div>
+    </div>
+</nz-card>

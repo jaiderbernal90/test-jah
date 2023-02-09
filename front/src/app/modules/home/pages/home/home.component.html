@@ -1,0 +1,14 @@
+<section class="row">
+    <div class="col-12">
+        <h2>Inmuebles a la venta</h2>
+        <span class="text-muted">A continuación encontrarás una lista de inmuebles con su información detallada los cuales están dispobibles apra la venta. <a [routerLink]="['/','inmuebles']">Administrar.</a></span>
+    </div>    
+</section>
+<section class="row mt-4">
+    <app-list-cards-buildings *ngFor="let item of buildingList" [building]="item" [loading]="loading" class="col-md-4 col-12" 
+    infiniteScroll
+    [infiniteScrollDistance]="9"
+    [infiniteScrollThrottle]="0"
+    (scrolled)="onScroll()"  
+    ></app-list-cards-buildings>
+</section>

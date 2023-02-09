@@ -1,0 +1,88 @@
+<nz-spin [nzSpinning]="loading">
+    <form nz-form [formGroup]="form" (ngSubmit)="submit()" [nzLayout]="'vertical'" >
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-12">
+                <nz-form-item>
+                    <nz-form-label>Titulo</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input placeholder="Titulo" formControlName="title" >
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-4 col-12">
+                <nz-form-item>
+                    <nz-form-label>Tipo de inmueble</nz-form-label>
+                    <nz-select style="min-width: 220px;" class="w-100" nzPlaceHolder="Tipo de inmueble" nzAllowClear formControlName="type">
+                        <nz-option *ngFor="let option of typesBuilding" [nzValue]="option.value" [nzLabel]="option.label" ></nz-option>
+                    </nz-select>
+                </nz-form-item>
+               
+            </div>
+            <div class="col-sm-4 col-12">
+                <nz-form-item>
+                    <nz-form-label>Area (m2)</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input placeholder="Area (m2)" formControlName="area" maxlength="11">
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div class="col-sm-4 col-12">
+                <nz-form-item>
+                    <nz-form-label>Número de baños</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input placeholder="Número de baños" formControlName="num_toilets" maxlength="11">
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div class="col-sm-4 col-12">
+                <nz-form-item>
+                    <nz-form-label>Número de habitaciones</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input placeholder="Número de habitaciones" formControlName="num_rooms" maxlength="11">
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div class="col-sm-4 col-12">
+                <nz-form-item>
+                    <nz-form-label>Número de parqueaderos</nz-form-label>
+                    <nz-form-control>
+                        <input nz-input placeholder="Número de parqueaderos" formControlName="num_parking" maxlength="11">
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div class="col-sm-4 col-12">
+                <nz-form-item>
+                    <nz-form-label>Valor</nz-form-label>
+                    <nz-form-control>
+                        <nz-input-group [nzPrefix]="pricePrefix">
+                            <input nz-input placeholder="Valor"  type="text"  formControlName="price" currencyMask maxlength="20">
+                        </nz-input-group>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>
+            <div class="col-12">
+                <nz-form-control>
+                    <nz-form-label>Descripción</nz-form-label>
+                    <nz-textarea-count [nzMaxCharacterCount]="500">
+                        <textarea rows="4" nz-input maxlength="500" formControlName="description"></textarea>
+                    </nz-textarea-count>
+                </nz-form-control>
+            </div>
+        </div>
+        <div class="row mt-2">
+            <div class="col-md-12 text-right">
+                <nz-form-item>
+                    <nz-form-control>
+                        <button nz-button nzType="primary" [disabled]="!form.valid" nz-button nzType="primary" [nzLoading]="loading">Guardar</button>
+                    </nz-form-control>
+                </nz-form-item>
+            </div>    
+        </div>
+    </form>
+</nz-spin>
+
+<ng-template #pricePrefix>
+    <span>$</span>
+</ng-template> 

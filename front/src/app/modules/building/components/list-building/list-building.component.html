@@ -1,0 +1,49 @@
+<nz-table #usersListTable #sortTable [nzData]="buildingList" [nzLoading]="loading"
+[nzShowPagination]="false" [nzFrontPagination]="false" >
+    <thead>
+        <tr>
+            <th *ngFor="let column of orderColumn" [nzSortFn]="column.compare" [nzSortPriority]="column.priority">{{ column.title }}</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of usersListTable.data;  let i = index">
+            <td>
+                <div class="d-flex align-items-center">
+                    <span>{{ item?.title }}</span>
+                </div>
+            </td>
+            <td>
+                <div class="d-flex align-items-center">
+                    <span class="">{{ item?.type | typeBuilding }}</span>
+                </div>
+            </td>
+            <td class="max-width-300">
+                {{ item?.description | slice:0:100 }}
+            </td>
+            <td>
+                {{ item?.area | number }}
+            </td>
+            <td>
+                {{ item?.num_rooms | number }}
+            </td>
+            <td>
+                {{ item?.num_toilets | number }}
+            </td>
+            <td>
+                {{ item?.num_parking | number }}
+            </td>
+            <td>
+                {{ item?.price | currency:'USD': 'symbol':'1.0-0'  }}
+            </td>
+            <td class="text-md-right min-width-130">
+                <a class="m-r-5 btn-warning" nz-button nzType="default" nzShape="circle" nz-tooltip nzTooltipTitle="Editar" [routerLink]="['/', 'inmuebles', 'editar', item.id]" >
+                    <span nz-icon nzType="edit" nzTheme="outline"></span>
+                </a>
+                <button nz-button nzType="default" nzShape="circle" nz-tooltip nzTooltipTitle="Eliminar" class="btn-delete" nz-popconfirm nzPopconfirmTitle="¿Esta seguro de eliminar este registro?" [nzBeforeConfirm]="beforeConfirm"
+                (nzOnConfirm)="confirm(item.id)" (nzOnCancel)="cancel()">
+                    <i nz-icon nzType="delete" theme="outline"></i>
+                </button>
+            </td>
+        </tr>
+    </tbody>
+</nz-table>

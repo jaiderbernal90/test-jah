@@ -1,0 +1,16 @@
+<nz-layout class="layout">
+    <nz-header>
+      <div class="logo">
+        <h1>INMUEBLES - JAH</h1>
+      </div>
+      <ul nz-menu nzTheme="dark" nzMode="horizontal">
+        <li nz-menu-item *ngFor="let item of itemsNav" [routerLink]="item.path" [routerLinkActive]="'ant-menu-item-selected'" [routerLinkActiveOptions]="{ exact:true }">{{ item.title }}</li>
+      </ul>
+    </nz-header>
+    <nz-content>
+      <main class="inner-content mt-5">
+        <router-outlet></router-outlet>
+      </main>
+    </nz-content>
+    <nz-footer>© Jaider Bernal - 2023</nz-footer>
+  </nz-layout> 
